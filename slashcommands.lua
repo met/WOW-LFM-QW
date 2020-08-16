@@ -27,7 +27,7 @@ local C = NS.C;
 
 
 SLASH_LFMQW1 = "/lfmqw";
-SLASH_SQTT2 = "/lfmq";
+SLASH_LFMQW2 = "/lfmq";
 NS.mainSlashCmd = SLASH_LFMQW1;
 
 SlashCmdList["LFMQW"] = function(msg)
@@ -57,4 +57,5 @@ function NS.printUsage()
 		print(C.Yellow, NS.mainSlashCmd, "debug -- set debug on");
 		print(C.Yellow, NS.mainSlashCmd, "nodebug -- set debug off");
 		print(C.Yellow, NS.mainSlashCmd, "debug? -- show current debug state");
+		print(C.Yellow, NS.mainSlashCmd, "clear -- clear data broker ouput");
 end
