@@ -1,2 +1,2 @@
-# lfm-qw
+# LFM-qw
  WoW LFM Quest Watcher

@@ -1,0 +1,19 @@
+## Interface: 11305
+## Title: LFM Quest Watcher
+## Notes: Watch if someone is looking for help with the quest in you log
+## Author: Martin Hassman
+## Version: 0.1
+## OptionalDeps: WoWUnit, Errlogger
+## SavedVariables: LFMQWSharedData
+## SavedVariablesPerCharacter: LFMQWSettings, LFMQWData
+
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+
+consts.lua
+events.lua
+slashcommands.lua
+broker.lua
+logger.lua
+
