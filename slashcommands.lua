@@ -31,6 +31,7 @@ SLASH_LFMQW2 = "/lfmq";
 NS.mainSlashCmd = SLASH_LFMQW1;
 
 SlashCmdList["LFMQW"] = function(msg)
+	local msg = string.lower(msg);
 
 	if msg == "" or msg =="help" then
 		NS.printUsage();
