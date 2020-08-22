@@ -86,7 +86,7 @@ function events.CHAT_MSG_CHANNEL(...)
 		local ignore = false;
 
 		-- Check is message is not from current player, ignore such messages
-		if playerName ~= nill and playerName == GetUnitName("player") then
+		if playerName ~= nill and playerName == UnitName("player") then
 			ignore = true;
 		end
 		-- TODO should check playerName if it is not someone from his party or someone on ignore list?
