@@ -43,8 +43,8 @@ SlashCmdList["LFMQW"] = function(msg)
 	elseif msg == "debug?" then
 		print(NS.msgPrefix, "debug=", NS.settings.debug);
 	elseif msg == "clear" then
-		NS.updateBrokerText("");
-		print(NS.msgPrefix, "Cleared.");
+		NS.clear();
+		print(NS.msgPrefix, "Cleared.");		
 	else
 		print("Unknown parameter:", msg);
 	end
@@ -58,4 +58,8 @@ function NS.printUsage()
 		print(C.Yellow, NS.mainSlashCmd, "nodebug -- set debug off");
 		print(C.Yellow, NS.mainSlashCmd, "debug? -- show current debug state");
 		print(C.Yellow, NS.mainSlashCmd, "clear -- clear data broker ouput");
+end
+
+function NS.clear()
+		NS.updateBrokerText("");
 end

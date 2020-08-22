@@ -56,11 +56,17 @@ dataBroker = ldb:NewDataObject(addonName, {
 	type = "data source",
 	text = "",
 	icon = "Interface\\Icons\\Ability_Druid_DemoralizingRoar",
+	OnClick = function(clickedframe, button)
+		if IsControlKeyDown() then
+			NS.clear();
+		end
+	end,	
 });
 
 
 function dataBroker:OnTooltipShow()
 	self:AddLine(addonName.." v"..GetAddOnMetadata(addonName, "version"));
+	self:AddLine("Ctrl+click for clear");
 	self:AddLine(" ");
 
 	local verbose = IsShiftKeyDown();
