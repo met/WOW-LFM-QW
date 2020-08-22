@@ -81,11 +81,17 @@ function events.CHAT_MSG_CHANNEL(...)
 	text = string.lower(text); -- lowecase message, we store all questnames lowecased for better matching
 
 	-- now check text for names of my quests
-	-- TODO should check playerName if it is not player itself or someone from his party or someone on ignore list?
 	for i, questName in ipairs(NS.questNames) do
 		local found = string.find(text, questName);  -- what about special characters in questName? Can we detect them, escape them?
+		local ignore = false;
+
+		-- Check is message is not from current player, ignore such messages
+		if playerName ~= nill and playerName == GetUnitName("player") then
+			ignore = true;
+		end
+		-- TODO should check playerName if it is not someone from his party or someone on ignore list?
 		                                           
-		if found then
+		if found and not ignore then
 			print(C.Green1, "===================================");
 			print(C.Red,    "===================================");
 			print(C.Red, "Someone is looking for group for quest in your quest log", questName);
