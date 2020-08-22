@@ -12,8 +12,8 @@ libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
 libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
 
 consts.lua
+lfm-qw.lua
 events.lua
 slashcommands.lua
 broker.lua
 logger.lua
-

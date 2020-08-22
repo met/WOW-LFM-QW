@@ -77,7 +77,7 @@ frame:RegisterEvent("ADDON_LOADED");
 -- But not for other msg sources, not for guild chats, not for party chat, not for yelling etc.
 -- There are many others CHAT_MSG_* like CHAT_MSG_SAY, CHAT_MSG_YELL, CHAT_MSG_WHISPER, CHAT_MSG_MONSTER_SAY, CHAT_MSG_PARTY etc
 function events.CHAT_MSG_CHANNEL(...)
-	local text, _, _, channelName, playerName = ...;
+	local text, _, _, channelName, messageAuthorName = ...;
 	text = string.lower(text); -- lowecase message, we store all questnames lowecased for better matching
 
 	-- now check text for names of my quests
@@ -86,21 +86,25 @@ function events.CHAT_MSG_CHANNEL(...)
 		local ignore = false;
 
 		-- Check is message is not from current player, ignore such messages
-		if playerName ~= nill and playerName == UnitName("player") then
+		if messageAuthorName ~= nill and messageAuthorName == UnitName("player") then
 			ignore = true;
 		end
-		-- TODO should check playerName if it is not someone from his party or someone on ignore list?
+
+		-- If player is in party, check if message is not from party member, ignore such message
+		if IsInGroup() and NS.isUnitInPlayerGroup(messageAuthorName) then
+			ignore = true;
+		end
 		                                           
 		if found and not ignore then
 			print(C.Green1, "===================================");
 			print(C.Red,    "===================================");
 			print(C.Red, "Someone is looking for group for quest in your quest log", questName);
-			print(channelName, ":", playerName, ":", text);
+			print(channelName, ":", messageAuthorName, ":", text);
 			PlaySound(3338); -- BullWhip, TODO can find some better sound later, or make setting for player to change this
 			                 -- sound list https://classic.wowhead.com/sounds 
 			                 -- SOUNDKIT.* sound constants
 
-			NS.updateBrokerText(playerName);
+			NS.updateBrokerText(messageAuthorName);
 		end
 	end
 end
